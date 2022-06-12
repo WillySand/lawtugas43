@@ -22,7 +22,8 @@ def reader_mahasiswa(request,npm):
     response = requests.request("GET", url=url)
     
     return JsonResponse(json.loads(response.text))
-    
+
+@csrf_exempt
 def reader_mahasiswa_cached(request,npm,trx_id):
     try:
         mahasiswa = Mahasiswa.objects.get(npm=npm)
