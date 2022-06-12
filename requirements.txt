@@ -1,0 +1,5 @@
+Django==3.2.8
+django-environ==0.4.4
+gunicorn==19.7.1
+requests==2.27.1
+psycopg2-binary
