@@ -32,7 +32,10 @@ def reader_mahasiswa_cached(request,npm,trx_id):
     except :
         url = "https://law4read.herokuapp.com/"+npm
         response = requests.request("GET", url=url)
-        nama = json.loads(response.text)['nama']
-        mahasiswa = Mahasiswa(npm=npm, nama=nama)
-        mahasiswa.save()
-        return JsonResponse(json.loads(response.text))
+        try:
+            nama = json.loads(response.text)['nama']
+            mahasiswa = Mahasiswa(npm=npm, nama=nama)
+            mahasiswa.save()
+            return JsonResponse(json.loads(response.text))
+        except:
+            return JsonResponse({"status": "NPM does not exist"})
