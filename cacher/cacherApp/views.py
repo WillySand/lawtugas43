@@ -7,18 +7,12 @@ import json
 
 @csrf_exempt
 def update_mahasiswa(request):   
-    url = "https://law4update.herokuapp.com/"
-    payload={'npm': npm}
-    response = requests.request("POST", url=url, data=payload)
     if request.method == "POST":
         nama = request.POST['nama']
         npm = request.POST['npm']
-        try:
-            mahasiswa = Mahasiswa.objects.get(npm=npm)
-            mahasiswa.nama = nama
-        except :
-            mahasiswa = Mahasiswa(npm=npm, nama=nama)
-        mahasiswa.save()
+        url = "https://law4update.herokuapp.com/"
+        payload={'npm': npm}
+        response = requests.request("POST", url=url, data=payload)
         return JsonResponse({'status':'OK'})
     return JsonResponse({'status': 'Method Not Allowed'})
 
