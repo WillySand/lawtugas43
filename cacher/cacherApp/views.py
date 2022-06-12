@@ -38,4 +38,4 @@ def reader_mahasiswa_cached(request,npm,trx_id):
             mahasiswa.save()
             return JsonResponse(json.loads(response.text))
         except:
-            return JsonResponse({"status": "NPM does not exist"})
+            return JsonResponse(json.loads(response.text))
